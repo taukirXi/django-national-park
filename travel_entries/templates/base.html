@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National park travel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+
+
+<div class="container-fluid">
+    <div class="con">
+    <img class="img" src="{% static 'park.jpg' %}" alt="Nature" ">
+    <div class="text-block">
+    <h1>National Park TRavel</h1>
+    <h5>Tell us about your experiences & suggest recommendations!</h5>
+    </div>
+    <br><br>
+    <a href="{% url 'add_post' %}" class="stretched-link" style="font-size: large;">Add Post</a>
+    <hr>
+    <hr>
+
+    {% for entry in object_list %}
+    <h2>{{entry.place_name}}</h2>
+    <h4>{{entry.text | safe }}</h4>
+    <span class="text-muted"> Posted by {{entry.author_name}} on {{entry.pub_date }}</span>
+    <hr>
+
+    {% endfor %}
+
+
+    <footer>
+       <p class="copyright text-muted">Copyright &copy; Taukir Ahmmed</p>
+
+    </footer>
+</div>
+</div>
+
+
+</body>
+</html>

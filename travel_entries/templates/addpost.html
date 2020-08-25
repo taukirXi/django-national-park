@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add post</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>  
+
+
+    <div class="container-fluid">
+        <div class="con">
+            <img class="img" src="{% static 'park.jpg' %}" alt="Nature" ">
+            <div class="text-block">
+            <h1>Post Now</h1>
+            <h5>Favorite hikes? Camping sites? Other thigs to do?</h5>
+            </div>
+
+
+            <a href="{% url 'home' %}">< bak to posts</a>
+
+            <br><br><br>
+
+            <form method="POST" enctype="multipart/form-data"> 
+
+                <!-- Security token -->
+                {% csrf_token %} 
+            
+                <!-- Using the formset -->
+                {{ form.as_p }} 
+                
+                <input type="submit" value="Submit"> 
+            </form> 
+            
+            <footer>
+                <p class="copyright text-muted">Copyright &copy; Taukir Ahmmed</p>
+         
+             </footer>
+
+</div>
+</div>
+    
+</body>
+</html>
